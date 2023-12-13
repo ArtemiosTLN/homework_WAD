@@ -18,46 +18,14 @@ window.onload = function() {
                     date.innerHTML = element.date;
                     let author = document.createElement("DIV");
                     author.innerHTML = element.author;
-                    let imageAvatar = document.createElement("IMG");
-                    imageAvatar.src = 'res/png/My_picture.png';
-                    imageAvatar.className = 'avatar';
-                    if (element.image != null) {
-                        let imageContent = document.createElement("IMG");
-                        fetch(element.image.valueOf())
-                            .then(response => {
-                                if (response.ok) {
-                                    return response.blob();
-                                } else {
-                                    throw new Error("Failed to fetch content image")
-                                }
-                            })
-                            .then(blob => {
-                                let reader = new FileReader();
-                                reader.onload = () => {
-                                    let dataURL = reader.result;
-                                    imageContent.src = dataURL;
-                                    imageContent.className = 'image';
-                                    post.appendChild(imageContent);
-                                };
-                                reader.readAsDataURL(blob);
-                            })
-                            .catch(err => {
-                                console.error("Error:", err);
-                            });
-                        }
-                        let content = document.createElement("DIV");
-                        content.className = 'content';
-                        content.innerHTML = element.content;
-                        let imageButton = document.createElement("IMG");
-                        imageButton.src = 'res/png/heart_button.png';
-                        imageButton.className = 'button';
-                        info.appendChild(imageAvatar);
-                        info.appendChild(date);
-                        info.appendChild(author);
-                        post.appendChild(info);
-                        post.appendChild(content);
-                        post.appendChild(imageButton);
-                        parentDiv.appendChild(post);
+                    let content = document.createElement("DIV");
+                    content.className = 'content';
+                    content.innerHTML = element.content;
+                    info.appendChild(date);
+                    info.appendChild(author);
+                    post.appendChild(info);
+                    post.appendChild(content);;
+                    parentDiv.appendChild(post);
                 });
                 document.body.appendChild(parentDiv);
             } else {
@@ -65,6 +33,18 @@ window.onload = function() {
             }
         })
         .finally(() => {
+            let buttons = document.createElement("DIV");
+            let addpost = document.createElement("BUTTON");
+            addpost.className = "buttons";
+            let deleteall = document.createElement("BUTTON");
+            deleteall.className = "buttons";
+            addpost.innerText = "Add Post";
+            deleteall.innerText = "Inner Text";
+            addpost.innerHTML = "<a href=\"add_post\">Add Post</a>";
+            buttons.appendChild(addpost);
+            buttons.appendChild(deleteall);
+            document.body.appendChild(buttons);
+
             let footer = document.createElement("FOOTER");
             let p = document.createElement("P");
             p.innerText = "This beautiful page is provided to you by Tartu University students";

@@ -1,4 +1,4 @@
-import pkg from 'pg'
+const pkg = require('pg');
 const { Pool } = pkg;
 
 const pool = new Pool({
@@ -8,5 +8,3 @@ const pool = new Pool({
     host: "localhost",
     port: "5432"
 });
-
-export default pool;
