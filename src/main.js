@@ -14,5 +14,5 @@ app.mount('#app')
 
 /*new Vue({
     render: (h) => h(App),
-    store, // подключение Vuex к приложению
+    store, // подключение Vuex к приложени
 }).$mount("#app");*/
