@@ -4,13 +4,13 @@ services:
   postgres:
     image: postgres:16
     environment:
-      POSTGRES_PASSWORD: Passwort # Replace with your password
-      POSTGRES_DB: hw4WAD             # Optional: Specify a database name
-      POSTGRES_USER: postgres          # Optional: Specify a user (default is postgres)
+      POSTGRES_PASSWORD: Passwort
+      POSTGRES_DB: hw4WAD
+      POSTGRES_USER: postgres
     ports:
       - "62222:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data # Optional: Persistent storage
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
   postgres_data:

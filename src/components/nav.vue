@@ -16,6 +16,21 @@
   </header>
 </template>
 
+<script>
+import {mapGetters} from "vuex";
+export default {
+  name: "Nav",
+  methods: {
+    goToHome() {
+      this.router.push('/');
+    },
+    goToContacts() {
+      this.router.push('/Contacts');
+    }
+  }
+};
+</script>
+
 
 <style scoped>
 .header ul {

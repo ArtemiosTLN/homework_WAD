@@ -1,27 +1,39 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import posts from '../views/posts.vue'
-import addPost from '../views/addPost.vue'
+import AllPosts from "@/views/AllPosts";
+import APost from "@/views/APost";
+import AddPost from "@/views/AddPost";
+import Contacts from "@/views/Contacts";
 
 const routes = [{
-    path: '/',
-    name: 'posts',
-    component: () =>
-        import ("../views/posts.vue")
-},
+        path: '/',
+        name: 'LogIn',
+        component: () => import('../views/LogIn')
+    },
+    {
+        path: "/api/contacts",
+        name: "Contacts",
+        component: Contacts
+    },
     {
         path: "/api/allposts",
-        name: "posts",
-        component: posts,
+        name: "AllPosts",
+        component: AllPosts,
+    },
+    {
+        path: "/api/apost/:id",
+        name: "APost",
+        component: APost,
     },
     {
         path: "/api/addpost",
-        name: "addPost",
-        component: addPost,
+        name: "AddPost",
+        component: AddPost,
     },
-    {
+    
+    { //will route to AllPosts view if none of the previous routes apply
         path: "/:catchAll(.*)",
-        name: "posts",
-        component: posts,
+        name: "AllPosts",
+        component: AllPosts,
     }
 ]
 

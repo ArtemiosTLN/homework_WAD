@@ -1,8 +1,15 @@
-<script setup>
-import vue_nav from './components/vue_nav.vue'
-
-</script>
-
 <template>
-  <vue_nav />
+  <Nav/>
+  <router-view/>
+  <Footer/>
 </template>
+
+<script>
+import Footer from "@/components/Footer";
+import Nav from "@/components/Nav";
+
+export default {
+  name: "App",
+  components: { Footer, Nav },
+};
+</script>

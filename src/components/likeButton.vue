@@ -4,22 +4,19 @@
 </template>
 
 <script>
-import Vue from 'vue';
-export default function (Vue) {
-  return {
-    data() {
-      return {
+export default {
+  name: "LikeButton",
+  data() {
+    return {
         likes: 0,
-      };
-    },
-    methods: {
+      }; 
+  }, 
+  methods: {
       incrementLikes() {
         this.likes++;
       },
     },
-  };
-}
-
+};
 </script>
 
 <style scoped>

@@ -1,21 +1,21 @@
 <template>
   <div class="post" v-for="post in posts" :key="post.id">
-    <div class="info">
-      <img src="res/png/My_picture.png" class="avatar">
-      <div class="date">{{ post.date }}</div>
+    <div class='info' :href="'/api/apost/' + post.id">
+      <img src="../components/icons/My_picture.png" class="avatar">
+      <div class="date">{{ post.date }}</div>        
       <div>{{ post.author }}</div>
     </div>
     <div class="content">{{ post.content }}</div>
-
-    <component :is="likeButton" :likes="post.likes" />
+    <img class="image" src="{{ post.image }}">
+    <component :is="LikeButton" :likes="post.likes" />
   </div>
 </template>
 
 
 <script>
-import { likeButton } from '../components/likeButton.vue';
+import { LikeButton } from '@/components/LikeButton'
 export default {
-  name: "posts",
+  name: "AllPosts",
   data() {
     return {
       posts: [],

@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       post: {
-        date: "",
+        date: new Date().toISOString().replace(/T.*/, "").replace(/Z/g, ""),
         author: "",
         content: "",
         image: "",
@@ -27,7 +27,7 @@ export default {
   methods: {
     addPost() {
       var data = {
-        date: new Date().toISOString().replace(/T.*/, "").replace(/Z/g, ""),
+        date: this.post.date,
         author: this.post.author,
         content: this.post.content,
         image: this.post.image,

@@ -4,6 +4,12 @@
     </footer>
 </template>
 
+<script>
+export default {
+  name: "Footer"
+}
+</script>
+
 <style scoped>
 footer p {
   text-align: center;
