@@ -1,4 +1,4 @@
-import pkg from 'pg'
+const pkg = require('pg');
 const { Pool } = pkg;
 
 const pool = new Pool({
@@ -41,4 +41,4 @@ execute(createTblQuery).then(result => {
     }
 });
 
-export default pool
+module.exports = pool;

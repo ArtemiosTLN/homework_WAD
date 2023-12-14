@@ -1,27 +1,21 @@
 const express = require('express');
-const path = require('path');
 const pool = require('./database');
 const cors = require('cors');
-const { fileURLToPath } = require('url');
-const { dirname } = require('path');
 
 const port = process.env.PORT || 3000;
 
 const app = express();
 
-app.use(cors())
+
+const corsOptions = {
+    origin: 'http://allowed-origin.com',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
-
-
-app.get('/', (req, res) => {
-    // res.send can be used to send text and HTML snippets
-    //res.send('</h1>First HTML response message! </h1>');
-
-    /* res.sendFile() is a method that can be used to send files as its name indicates
-    However, it takes the absolute not the relative path to the file. Therefore, you need to specify what is the root directory.
-    To avoid this confusion, you can use  "__dirname"*/
-    res.sendFile('./index.html', { root: __dirname });
-});
 
 // add post
 app.post('/api/posts/', async(req, res) => {
