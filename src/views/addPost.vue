@@ -13,26 +13,25 @@
 
 <script>
 export default {
-  name: "addPost",
+  name: "AddPost",
   data() {
     return {
       post: {
-        date: new Date().toISOString().replace(/T.*/, "").replace(/Z/g, ""),
-        author: "",
-        content: "",
-        image: "",
+        title: "",
+        body: "",
+        urllink: "",
       },
     };
   },
   methods: {
     addPost() {
+      console.log("Here now")
       var data = {
-        date: this.post.date,
-        author: this.post.author,
-        content: this.post.content,
-        image: this.post.image,
+        title: this.post.title,
+        body: this.post.body,
+        urllink: this.post.urllink,
       };
-      fetch("http://localhost:3000/api/posts/", {
+      fetch("http://localhost:3000/api/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,8 +40,9 @@ export default {
       })
           .then((response) => {
             console.log(response.data);
-            this.$router.push("/api/allposts");
+
           })
+      this.$router.push("/api/allposts")
           .catch((e) => {
             console.log(e);
             console.log("error");
@@ -51,3 +51,45 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.addpost {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  background-color: lightcyan;
+  border: 4px solid teal;
+  padding: 20px;
+  max-width: 400px;
+  align-items: center;
+  border-radius: 40px;
+}
+.textarea {
+  display: flex;
+  margin: 20px;
+}
+.form {
+  display: flex;
+  margin: 20px;
+}
+.create_post {
+  width: 100px;
+}
+.login-inputs {
+  text-align: center;
+}
+.post-creation{
+  text-align: center;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  background-color: lightcyan;
+  border: 4px solid teal;
+  padding: 20px;
+  max-width: 400px;
+  align-items: center;
+  border-radius: 40px;
+}
+</style>
