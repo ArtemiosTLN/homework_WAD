@@ -1,13 +1,15 @@
 <template>
   <div class="post" v-for="post in posts" :key="post.id">
-    <div class='info' :href="'/api/apost/' + post.id">
-      <img src="../components/icons/My_picture.png" class="avatar">
-      <div class="date">{{ post.date }}</div>        
-      <div>{{ post.author }}</div>
-    </div>
-    <div class="content">{{ post.content }}</div>
-    <img class="image" src="{{ post.image }}">
-    <component :is="LikeButton" :likes="post.likes" />
+    <a :href="'/api/apost/' + post.id">
+      <div class='info'>
+        <img src="../components/icons/My_picture.png" class="avatar">
+        <div class="date">{{ post.date }}</div>        
+        <div>{{ post.author }}</div>
+      </div>
+      <div class="content">{{ post.content }}</div>
+      <img class="image" src="{{ post.image }}">
+      <component :is="LikeButton" :likes="post.likes" />
+    </a>
   </div>
 </template>
 

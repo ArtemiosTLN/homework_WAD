@@ -1,21 +1,21 @@
 const express = require('express');
 const pool = require('./database');
-const cors = require('cors');
+const cors = require('cors')
+
+// const path = require('path');
+// const { fileURLToPath } = require('url');
+// const { dirname } = require('path');
 
 const port = process.env.PORT || 3000;
 
 const app = express();
 
-
-const corsOptions = {
-    origin: 'http://allowed-origin.com',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    optionsSuccessStatus: 204,
-};
-
-app.use(cors(corsOptions));
+app.use(cors())
 app.use(express.json());
+
+// app.get('/', (req, res) => {
+    // res.sendFile('./index.html', { root: __dirname });
+// }); 
 
 // add post
 app.post('/api/posts/', async(req, res) => {
@@ -50,7 +50,7 @@ app.get('/api/posts/:id', async(req, res) => {
         console.log("get a post with specific id request has arrived");
         const { id } = req.params;
         const posts = await pool.query(
-            "SELECT * FROM posttable WHERE id = $1", [id]
+            "SELECT * FROM posts WHERE id = $1", [id]
         );
         res.json(posts.rows[0]);
     } catch (err) {
@@ -77,7 +77,6 @@ app.put('/api/posts/:id', async(req, res) => {
 app.delete('/api/posts/:id', async(req, res) => {
     try {
         const { id } = req.params;
-        //const post = req.body; // we do not need a body for a delete request
         console.log("delete a post request has arrived");
         const deletepost = await pool.query(
             "DELETE FROM posts WHERE id = $1", [id]
