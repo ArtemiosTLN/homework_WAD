@@ -40,49 +40,6 @@ function validatePassword() {
   }
   return true;
 }
-</script>
-
-<template>
-  <div class="post-creation">
-    <form action="index.html" method="post" enctype="multipart/form-data" class="login-form" onsubmit="return validatePassword()">
-      <div class="login-content">
-        <p>Welcome to PostIT </p>
-        <p><router-link to="/api/signup">Create an account</router-link></p>
-        <p>or</p>
-        <p>Please Log In</p>
-      </div>
-      <div class="login-inputs">
-        <input type="email" id="email" name="email" required placeholder="Email">
-        <input type="password" id="password" name="password" required placeholder="Password">
-        <p></p>
-        <div class="button-container">
-          <button type="submit">Log In</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</template>
-
-<style scoped>
-.login-inputs {
-  text-align: center;
-}
-.post-creation{
-  text-align: center;
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  flex-direction: column;
-  background-color: lightcyan;
-  border: 4px solid teal;
-  padding: 20px;
-  max-width: 400px;
-  align-items: center;
-  border-radius: 40px;
-}
-</style>
-
-<script>
 export default {
   name: "LogIn",
   data: function () {
@@ -120,3 +77,44 @@ export default {
   },
 }
 </script>
+
+<template>
+  <div class="post-creation">
+    <form action="index.html" method="post" enctype="multipart/form-data" class="login-form" onsubmit="return validatePassword()">
+      <div class="login-content">
+        <p>Welcome to PostIT </p>
+        <p class="special_font">Create an Account</p>
+        <p>or</p>
+        <p>Please Log In</p>
+      </div>
+      <div class="login-inputs">
+        <input type="email" id="email" name="email" required placeholder="Email">
+        <input type="password" id="password" name="password" required placeholder="Password">
+        <p></p>
+        <div class="button-container">
+          <button type="submit">Log In</button>
+        </div>
+        <p class="special_font">Forgot Password</p>
+      </div>
+    </form>
+  </div>
+</template>
+
+<style scoped>
+.login-inputs {
+  text-align: center;
+}
+.post-creation{
+  text-align: center;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  background-color: lightcyan;
+  border: 4px solid teal;
+  padding: 20px;
+  max-width: 400px;
+  align-items: center;
+  border-radius: 40px;
+}
+</style>
