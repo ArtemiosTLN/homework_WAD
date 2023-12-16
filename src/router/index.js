@@ -4,8 +4,7 @@ import SinglePost from "../views/SinglePost.vue";
 import AddPost from "../views/AddPost.vue";
 import SignUp from "../views/SignUp.vue";
 import LogIn from "../views/LogIn.vue";
-
-import Contacts from "@/views/Contacts";
+import Contacts from "../views/Contacts";
 
 const routes = [{
         path: '/',
@@ -23,9 +22,9 @@ const routes = [{
         component: AllPosts,
     },
     {
-        path: "/api/apost/:id",
-        name: "APost",
-        component: APost,
+        path: "/api/singlepost/:id",
+        name: "SinglePost",
+        component: SinglePost,
     },
     {
         path: "/api/addpost",
