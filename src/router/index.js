@@ -43,8 +43,8 @@ const routes = [{
     },
     { //will route to AllPosts view if none of the previous routes apply
         path: "/:catchAll(.*)",
-        name: "AllPosts",
-        component: AllPosts,
+        name: "LogIn",
+        component: LogIn,
     }
 ]
 
