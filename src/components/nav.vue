@@ -1,9 +1,8 @@
 <template>
   <header class="header">
     <ul class="nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="add_post.html">Add Post</a></li>
-      <li><a href="signup.html">Sign up</a> </li>
+      <li><router-link to="/api/login">Home</router-link></li>
+      <li><router-link to="/api/contacts">Contacts</router-link></li>
     </ul>
     <div class="dropdown" dropdown-button>
       <a class="logo" href="" onclick="return false"><img src="./icons/My_picture.png" width="100" height="64.51" alt="My picture"></a>
@@ -14,6 +13,7 @@
       </div>
     </div>
   </header>
+  <br><br><br><br>
 </template>
 
 <script>

@@ -1,4 +1,5 @@
 <template>
+  <button @click="Logout" class="button">Logout</button>
   <div class="post" v-for="post in posts" :key="post.id">
     <a :href="'/api/apost/' + post.id">
       <div class='info'>
@@ -8,22 +9,45 @@
       </div>
       <div class="content">{{ post.content }}</div>
       <img class="image" src="{{ post.image }}">
-      <component :is="LikeButton" :likes="post.likes" />
+      <component :is="likeButton" :likes="post.likes" />
     </a>
+  </div>
+  <div class="con">
+    <button @click="DeleteAll" class="button">Delete All</button>
+    <button @click="this.$router.push('/api/addpost')" class="button">Add Post</button>
   </div>
 </template>
 
 
 <script>
-import { LikeButton } from '@/components/LikeButton'
+import likeButton from '@/components/likeButton.vue'
 export default {
   name: "AllPosts",
+  computed: {
+    likeButton() {
+      return likeButton
+    }
+  },
   data() {
     return {
       posts: [],
     };
   },
   methods: {
+    Logout() {
+      fetch("http://localhost:3000/auth/logout", {
+      })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            console.log('jwt removed');
+            this.$router.push("/login");
+          })
+          .catch((e) => {
+            console.log(e);
+            console.log("error logout");
+          });
+    },
     fetchPosts() {
       fetch(`http://localhost:3000/api/posts/`)
           .then((response) => response.json())

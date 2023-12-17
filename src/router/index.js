@@ -1,14 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import AllPosts from "../views/AllPosts";
-import APost from "../views/APost";
-import AddPost from "../views/AddPost";
-import Contacts from "../views/Contacts";
+import AllPosts from "../views/AllPosts.vue";
+import SinglePost from "../views/SinglePost.vue";
+import AddPost from "../views/AddPost.vue";
+import SignUp from "../views/SignUp.vue";
 import LogIn from "../views/LogIn.vue";
+import Contacts from "../views/Contacts";
 
 const routes = [{
         path: '/',
         name: 'LogIn',
-        component: () => import('../views/LogIn')
+        component: () => import('../views/LogIn.vue')
     },
     {
         path: "/api/contacts",
@@ -21,14 +22,19 @@ const routes = [{
         component: AllPosts,
     },
     {
-        path: "/api/apost/:id",
-        name: "APost",
-        component: APost,
+        path: "/api/singlepost/:id",
+        name: "SinglePost",
+        component: SinglePost,
     },
     {
         path: "/api/addpost",
         name: "AddPost",
         component: AddPost,
+    },
+    {
+        path: "/api/signup",
+        name: "SignUp",
+        component: SignUp,
     },
     {
         path: "/api/login",
