@@ -17,9 +17,10 @@ export default {
   data() {
     return {
       post: {
-        title: "",
-        body: "",
-        urllink: "",
+        date: new Date().toISOString(),
+        author: "",
+        content: "",
+        image: ""
       },
     };
   },
@@ -27,9 +28,10 @@ export default {
     addPost() {
       console.log("Here now")
       var data = {
-        title: this.post.title,
-        body: this.post.body,
-        urllink: this.post.urllink,
+        date: this.post.date,
+        author: this.post.author,
+        content: this.post.content,
+        image: this.post.image,
       };
       fetch("http://localhost:3000/api/posts", {
         method: "POST",

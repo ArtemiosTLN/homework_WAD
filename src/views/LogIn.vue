@@ -1,3 +1,24 @@
+<template>
+  <div class="post-creation">
+    <form action="/auth/login" method="get" enctype="multipart/form-data" class="login-form" onsubmit="return validatePassword()">
+      <div class="login-content">
+        <p>Welcome to PostIT </p>
+        <p class="special_font"><router-link to="/api/signup">Create an Account</router-link></p>
+        <p>or</p>
+        <p>Please Log In</p>
+      </div>
+      <div class="login-inputs">
+        <input type="email" id="email" name="email" required placeholder="Email">
+        <input type="password" id="password" name="password" required placeholder="Password">
+        <p></p>
+        <div class="button-container">
+          <button class="button" @click="LogIn" type="submit">Log In</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</template>
+
 <script>
 export default {
   name: "LogIn",
@@ -14,7 +35,7 @@ export default {
         password: this.password
       };
       fetch("http://localhost:3000/auth/login", {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
@@ -36,27 +57,6 @@ export default {
   },
 }
 </script>
-
-<template>
-  <div class="post-creation">
-    <form action="/auth/signup" method="post" enctype="multipart/form-data" class="login-form" onsubmit="return validatePassword()">
-      <div class="login-content">
-        <p>Welcome to PostIT </p>
-        <p class="special_font"><router-link to="/api/signup">Create an Account</router-link></p>
-        <p>or</p>
-        <p>Please Log In</p>
-      </div>
-      <div class="login-inputs">
-        <input type="email" id="email" name="email" required placeholder="Email">
-        <input type="password" id="password" name="password" required placeholder="Password">
-        <p></p>
-        <div class="button-container">
-          <button class="button" @click="LogIn" type="submit">Log In</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</template>
 
 <style scoped>
 .login-inputs {

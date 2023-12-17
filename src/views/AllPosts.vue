@@ -1,15 +1,15 @@
 <template>
   <button @click="Logout" class="button">Logout</button>
   <div class="post" v-for="post in posts" :key="post.id">
-    <a :href="'/api/apost/' + post.id">
-      <div class='info'>
+    <a :href="'/api/singlepost/' + post.id">
+      <div class="info">
         <img src="../components/icons/My_picture.png" class="avatar">
-        <div class="date">{{ post.date }}</div>        
+        <div class="date">{{ formatDate(post.date) }}</div>        
         <div>{{ post.author }}</div>
       </div>
       <div class="content">{{ post.content }}</div>
-      <img class="image" src="{{ post.image }}">
-      <component :is="likeButton" :likes="post.likes" />
+      <img class="image" v-if="post.image" src="{{ post.image }}">
+      <component :is="LikeButton" :likes="post.likes" />
     </a>
   </div>
   <div class="con">
@@ -20,12 +20,13 @@
 
 
 <script>
-import likeButton from '@/components/likeButton.vue'
+import moment from 'moment'
+import LikeButton from '@/components/LikeButton.vue'
 export default {
   name: "AllPosts",
   computed: {
     likeButton() {
-      return likeButton
+      return LikeButton
     }
   },
   data() {
@@ -53,6 +54,9 @@ export default {
           .then((response) => response.json())
           .then((data) => (this.posts = data))
           .catch((err) => console.log(err.message));
+    },
+    formatDate(date) {
+      return moment(date).format('YYYY-MM-DD');
     },
   },
   mounted() {

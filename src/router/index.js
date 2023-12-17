@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AllPosts from "../views/AllPosts.vue";
-import SinglePost from "../views/SinglePost.vue";
 import AddPost from "../views/AddPost.vue";
 import SignUp from "../views/SignUp.vue";
 import LogIn from "../views/LogIn.vue";
-import Contacts from "../views/Contacts";
+import Contacts from "../views/Contacts.vue";
+import SinglePost from '../views/SinglePost.vue'
 
 const routes = [{
         path: '/',
@@ -22,11 +22,6 @@ const routes = [{
         component: AllPosts,
     },
     {
-        path: "/api/singlepost/:id",
-        name: "SinglePost",
-        component: SinglePost,
-    },
-    {
         path: "/api/addpost",
         name: "AddPost",
         component: AddPost,
@@ -37,14 +32,19 @@ const routes = [{
         component: SignUp,
     },
     {
+        path: "/api/singlepost/:id",
+        name: "SinglePost",
+        component: SinglePost,
+    },
+    {
         path: "/api/login",
         name: "LogIn",
         component: LogIn,
     },
     { //will route to AllPosts view if none of the previous routes apply
         path: "/:catchAll(.*)",
-        name: "LogIn",
-        component: LogIn,
+        name: "AllPosts",
+        component: AllPosts,
     }
 ]
 
