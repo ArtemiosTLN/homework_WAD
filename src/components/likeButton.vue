@@ -23,5 +23,7 @@ export default {
 img {
   cursor: pointer;
   border: none;
+  width: 20px;
+  height: 20px;
 }
 </style>

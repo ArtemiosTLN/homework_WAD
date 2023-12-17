@@ -5,8 +5,6 @@
     <input name="author" type="text" id="author" required v-model="post.author" />
     <label for="content">Content: </label>
     <input name="content" type="text" id="content" required v-model="post.content" />
-    <label for="image">Image URL: </label>
-    <input name="image"  type="text" id="image" required v-model="post.image"/>
     <button @click="addPost" class="addPost">Add Post</button>
   </div>
 </template>

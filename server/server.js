@@ -2,14 +2,12 @@ const express = require('express');
 const pool = require('./database');
 const cors = require('cors')
 const bcrypt = require('bcrypt');
-const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 
 const port = process.env.PORT || 3000;
 const app = express();
 app.use(cors({ origin: 'http://localhost:8080', credentials: true }));
 app.use(express.json());
-app.use(cookieParser());
 
 const secret = "gdgdhdbcb770785rgdzqws";
 const maxAge = 60 * 60;
@@ -82,6 +80,17 @@ app.delete('/api/posts/:id', async(req, res) => {
     }
 });
 
+app.delete('/api/posts', async(req, res) => {
+    try {
+        console.log("delete all posts request has arrived");
+        const deleteallposts = await pool.query(
+            "DELETE FROM posts"
+        )
+        res.json(deleteallposts);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
 
 app.post('/auth/signup', async(req, res) => {
     try {
@@ -105,7 +114,7 @@ app.post('/auth/signup', async(req, res) => {
     }
 });
 
-app.get('/auth/login', async(req, res) => {
+app.post('/auth/login', async(req, res) => {
     try {
         console.log("a login request has arrived");
         const { email, password } = req.body;

@@ -21,11 +21,11 @@
 
 <script>
 import moment from 'moment'
-import LikeButton from '@/components/LikeButton.vue'
+import LikeButton from '@/components/likeButton.vue'
 export default {
   name: "AllPosts",
   computed: {
-    likeButton() {
+    LikeButton() {
       return LikeButton
     }
   },
@@ -35,6 +35,19 @@ export default {
     };
   },
   methods: {
+    DeleteAll() {
+      fetch(`http://localhost:3000/api/posts`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      })
+          .then((response) => {
+            console.log(response.data);
+            this.$router.push("/api/allposts");
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+    },
     Logout() {
       fetch("http://localhost:3000/auth/logout", {
       })
