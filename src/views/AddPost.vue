@@ -1,11 +1,15 @@
 <template>
-  <div class="form">
-    <h3>Add a Post</h3>
-    <label for="author">Author: </label>
-    <input name="author" type="text" id="author" required v-model="post.author" />
-    <label for="content">Content: </label>
-    <input name="content" type="text" id="content" required v-model="post.content" />
-    <button @click="addPost" class="addPost">Add Post</button>
+    <div class="Single Post">
+    <div id="form">
+      <h3>Add Post</h3>
+      <label for="author">Author: </label>
+      <input name="type" type="text" id="author" required v-model="post.author" />
+      <label for="content">Content: </label>
+      <textarea id="content" required v-model="post.content" style="width: 300px; height: 400px;">Content</textarea>
+      <label for="image">Image URL: </label>
+      <input name="image" type="text" id="image" required v-model="post.image" />
+      <button @click="addPost" class="addPost">Add Post</button>
+    </div>
   </div>
 </template>
 
@@ -38,15 +42,14 @@ export default {
         },
         body: JSON.stringify(data),
       })
-          .then((response) => {
-            console.log(response.data);
-
-          })
+      .then((response) => {
+        console.log(response.data);
+      })
       this.$router.push("/api/allposts")
-          .catch((e) => {
-            console.log(e);
-            console.log("error");
-          });
+      .catch((e) => {
+        console.log(e);
+        console.log("error");
+      });
     },
   },
 };

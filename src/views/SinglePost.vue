@@ -2,10 +2,12 @@
   <div class="Single Post">
     <div id="form">
       <h3>A Post</h3>
-      <label for="title">Title: </label>
-      <input name="type" type="text" id="title" required v-model="post.title" />
-      <label for="body">Body: </label>
-      <input name="body" type="text" id="body" required v-model="post.body" />
+      <label for="author">Author: </label>
+      <input name="type" type="text" id="author" required v-model="post.author" />
+      <label for="content">Content: </label>
+      <textarea id="content" required v-model="post.content" style="width: 300px; height: 400px;">Content</textarea>
+      <label for="image">Image URL: </label>
+      <input name="image" type="text" id="image" required v-model="post.image" />
     </div>
     <div class="container">
       <button @click="updatePost" class="updatePost">Update Post</button>
@@ -21,8 +23,10 @@ export default {
     return {
       post: {
         id: "",
-        title: "",
-        body: "",
+        date: "",
+        author: "",
+        content: "",
+        image: "",
       },
     };
   },
@@ -34,20 +38,21 @@ export default {
           .catch((err) => console.log(err.message));
     },
     updatePost() {
-      fetch(`http://localhost:3000/api/posts/${this.post.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(this.post),
-      })
-          .then((response) => {
+        this.post.date = new Date().toISOString();
+        fetch(`http://localhost:3000/api/posts/${this.post.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(this.post),
+        })
+        .then((response) => {
             console.log(response.data);
             this.$router.push("/api/allposts");
-          })
-          .catch((e) => {
+        })
+        .catch((e) => {
             console.log(e);
-          });
+        });
     },
     deletePost() {
       fetch(`http://localhost:3000/api/posts/${this.post.id}`, {

@@ -9,7 +9,7 @@
       <div class="dropdown-content">
         <p>John Doe</p>
         <p>john.doe@ut.ee</p>
-        <p>Logout</p>
+        <p @click="logOut">Logout</p>
       </div>
     </div>
   </header>
@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
 export default {
   name: "Nav",
   methods: {
@@ -26,6 +25,20 @@ export default {
     },
     goToContacts() {
       this.router.push('/Contacts');
+    },
+    logOut() {
+      fetch("http://localhost:3000/auth/logout", {
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        console.log('jwt removed');
+        this.$router.push("/api/login");
+      })
+      .catch((e) => {
+        console.log(e);
+        console.log("error logout");
+      });
     }
   }
 };

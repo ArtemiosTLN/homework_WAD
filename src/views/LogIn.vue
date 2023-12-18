@@ -10,6 +10,7 @@
       <input type="email" id="email" name="email" required placeholder="Email">
       <input type="password" id="password" name="password" required placeholder="Password">
       <p></p>
+      <div v-if="errMsg">{{ errMsg }}</div>
       <div class="button-container">
         <button class="button" @click="LogIn">Log In</button>
       </div>
@@ -24,6 +25,7 @@ export default {
     return {
       email: '',
       password: '',
+      errMsg: '',
     }
   },
   methods: {
@@ -40,17 +42,17 @@ export default {
         credentials: 'include',
         body: JSON.stringify(data),
       })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-            location.assign("/api/allposts");
-            this.$router.push("/api/allposts")
-          })
-          .catch((e) => {
-            console.log(e);
-            this.errMsg = 'Account does not exist';
-            console.log("error");
-          });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        location.assign("/api/allposts");
+        this.$router.push("/api/allposts")
+      })
+      .catch((e) => {
+        console.log(e);
+        this.errMsg = 'Account does not exist';
+        console.log("error");
+});
     },
   },
 }

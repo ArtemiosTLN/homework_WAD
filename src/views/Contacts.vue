@@ -3,7 +3,7 @@
     <div class="row">
       <div class="column">
         <h2>Authors of this website</h2>
-        <li ><p>Artjom Šiškov</p></li>
+        <li><p>Artjom Šiškov</p></li>
         <li><p>Artemi Sotskov</p></li>
         <li><p>Markus Hausenberg</p></li>
       </div>

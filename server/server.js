@@ -42,7 +42,7 @@ app.get('/api/posts', async(req, res) => {
 
 app.get('/api/posts/:id', async(req, res) => {
     try {
-        console.log("get a post with route parameter  request has arrived");
+        console.log("get a post with route parameter request has arrived");
         const { id } = req.params;
         const posts = await pool.query(
             "SELECT * FROM posts WHERE id = $1", [id]
@@ -59,7 +59,7 @@ app.put('/api/posts/:id', async(req, res) => {
         const post = req.body;
         console.log("update request has arrived");
         const updatepost = await pool.query(
-            "UPDATE posts SET (date, author, content, image,) = ($2, $3, $4, $5) WHERE id = $1 RETURNING*", [id, post.date, post.author, post.content ,post.image]
+            "UPDATE posts SET (date, author, content, image) = ($2, $3, $4, $5) WHERE id = $1 RETURNING*", [id, post.date, post.author, post.content ,post.image]
         );
         res.json(updatepost);
     } catch (err) {

@@ -51,22 +51,22 @@ export default {
     Logout() {
       fetch("http://localhost:3000/auth/logout", {
       })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-            console.log('jwt removed');
-            this.$router.push("/login");
-          })
-          .catch((e) => {
-            console.log(e);
-            console.log("error logout");
-          });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        console.log('jwt removed');
+        this.$router.push("/api/login");
+      })
+      .catch((e) => {
+        console.log(e);
+        console.log("error logout");
+      });
     },
     fetchPosts() {
       fetch(`http://localhost:3000/api/posts/`)
-          .then((response) => response.json())
-          .then((data) => (this.posts = data))
-          .catch((err) => console.log(err.message));
+      .then((response) => response.json())
+      .then((data) => (this.posts = data))
+      .catch((err) => console.log(err.message));
     },
     formatDate(date) {
       return moment(date).format('YYYY-MM-DD');
